@@ -143,7 +143,7 @@
                         <tr>
                             <th>No.</th>
                             <th>Berita</th>
-                            <th>Status</th>
+                            <th>Ubah Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -156,7 +156,7 @@
                                     <form action="{{ route('admin.update_status_berita', $berita->id) }}" method="POST"
                                         style="display: inline-block">
                                         @csrf
-                                        <input type="hidden" value="{{ $berita->status }}" name="verif">
+                                        <input type="hidden" value="{{ $berita->status }}" name="status">
                                         <button type="submit"
                                             class="btn shadow btn-outline-danger">
                                             {{ $berita->status }}
@@ -166,7 +166,7 @@
                                     <form action="{{ route('admin.update_status_berita', $berita->id) }}" method="POST"
                                         style="display: inline-block">
                                         @csrf
-                                        <input type="hidden" value="{{ $berita->status }}" name="verif">
+                                        <input type="hidden" value="{{ $berita->status }}" name="status">
                                         <button type="submit"
                                             class="btn shadow btn-outline-success">
                                             {{ $berita->status }}

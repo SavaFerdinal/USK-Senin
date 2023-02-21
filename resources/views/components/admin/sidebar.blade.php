@@ -85,6 +85,13 @@
         </a>
     </li>
 
+    <li class="sidebar-item {{ Request::is('admin/profile*') ? 'active' : '' }}">
+        <a href="{{ Route('user.profile') }}" class='sidebar-link'>
+            <i class="bi bi-person-fill"></i>
+            <span>Profile Saya </span>
+        </a>
+    </li>
+
     <li class="sidebar-item {{ request()->is('logout*') ? 'active' : '' }} ">
         <a href="{{ route('logout') }}"
             onclick="event.preventDefault();

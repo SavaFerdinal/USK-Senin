@@ -8,13 +8,13 @@
         </a>
     </li>
 
-    <li class="sidebar-item {{ Request::is('user/form-peminjaman*', 'user/riwayat-peminjaman*') ? 'active' : '' }} has-sub">
+    <li class="sidebar-item {{ Request::is('user/form-peminjaman*', 'user/riwayat-peminjaman*', 'user/form-dashboard*') ? 'active' : '' }} has-sub">
         <a href="#" class='sidebar-link'>
             <i class="bi bi-bookmark-fill"></i>
             <span>Peminjaman Buku</span>
         </a>
-        <ul class="submenu {{ Request::is('user/form-peminjaman*', 'user/riwayat-peminjaman*') ? 'active' : '' }}">
-            <li class="submenu-item {{ Request::is('user/form-peminjaman*') ? 'active' : '' }}">
+        <ul class="submenu {{ Request::is('user/form-peminjaman*', 'user/riwayat-peminjaman*', 'user/form-dashboard*') ? 'active' : '' }}">
+            <li class="submenu-item {{ Request::is('user/form-peminjaman*', 'user/form-dashboard*') ? 'active' : '' }}">
                 <a href="{{ Route('user.form_peminjaman') }}">Formulir Peminjaman Buku</a>
             </li>
             <li class="submenu-item ">

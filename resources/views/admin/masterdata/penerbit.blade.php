@@ -98,7 +98,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                <form action="{{ Route('admin.update_penerbit', $p->id) }}" method="post">
+                                <form action="{{ route('admin.update_penerbit', $p->id) }}" method="post">
                                     @csrf
                                     @method('put')
                                     <div class="modal-body">

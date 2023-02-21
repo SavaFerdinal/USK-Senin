@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\PeminjamanController as AdminPeminjamanController;
 use App\Http\Controllers\Admin\PenerbitController;
 use App\Http\Controllers\Admin\PesanController as AdminPesanController;
+use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\PeminjamanController;
 use App\Http\Controllers\User\PengembalianController;
@@ -93,7 +94,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('/admin')->group(function () {
     //                [ Penerbit ]  
     Route::get('/penerbit', [PenerbitController::class, 'indexPenerbit'])->name('admin.penerbit');
     Route::post('/tambah-penerbit', [PenerbitController::class, 'storePenerbit'])->name('admin.tambah_penerbit');
-    Route::put('/edit/penerbit/{id}', [PenerbitController::class, 'updatePenerbit'])->name('admin.update.penerbit');
+    Route::put('/edit/penerbit/{id}', [PenerbitController::class, 'updatePenerbit'])->name('admin.update_penerbit');
     Route::post('/update_status/{id}', [PenerbitController::class, 'updateStatus'])->name('admin.update_status_penerbit');
     Route::delete('/hapus/penerbit/{id}', [PenerbitController::class, 'deletePenerbit']);
 
@@ -140,7 +141,11 @@ Route::middleware(['auth', 'role:admin'])->prefix('/admin')->group(function () {
      //- - - - - - - - - Berita - - - - - - - - - -
     Route::get('/berita', [BeritaController::class, 'indexBerita'])->name('admin.berita');
     Route::post('/tambah-berita', [BeritaController::class, 'storeBerita'])->name('admin.tambah_berita');
-    Route::put('/edit/penerbit/{id}', [BeritaController::class, 'updateBerita'])->name('admin.update_berita');
+    Route::put('/edit/berita/{id}', [BeritaController::class, 'updateBerita'])->name('admin.update_berita');
     Route::post('/update-status-berita/{id}', [BeritaController::class, 'updateStatusBerita'])->name('admin.update_status_berita');
     Route::delete('/hapus/berita/{id}', [BeritaController::class, 'deleteBerita']);
+
+     //- - - - - - - - - Beri - - - - - - - - - -
+    Route::get('profile', [AdminProfileController::class, 'profile'])->name('user.profile');
+    Route::put('gambar', [AdminProfileController::class, 'gambar'])->name('user.gambar');
 });     

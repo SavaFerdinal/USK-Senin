@@ -180,7 +180,7 @@
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form action={{ url('/admin/hapus/anggota/' . $a->id) }} method="POST"
+                                <form action="{{ url('/admin/hapus/anggota/' . $a->id) }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     @method('DELETE')

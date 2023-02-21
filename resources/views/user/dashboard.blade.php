@@ -12,7 +12,7 @@
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="index.html">Dashboard</a>
+                                <a href="{{ Route('user.dashboard') }}">Dashboard</a>
                             </li>
                             {{-- <li class="breadcrumb-item active" aria-current="page">
               Layout Vertical Navbar
@@ -34,38 +34,46 @@
     </div>
 
     <div class="section">
-        <div class="row">
-            @foreach ($bukus as $buku)
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="{{ $buku->foto ?? '/assets/images/not-found.png' }}" class="card-img-top img-fluid"
-                                alt="{{ $buku->judul }}" />
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $buku->judul }}</h5>
-                                <p class="card-text">
-                                    <span class="badge bg-light-primary">{{ $buku->kategori->nama }}</span>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <p class="text-start">{{ $buku->pengarang }}</p>
+        @foreach ($kategori as $k)
+            @if ($k->bukus->count() < 1)
+                {{ null }}
+            @else
+                <h4>
+                    <span class="badge bg-light-danger">{{ $k->nama }}</span>
+                </h4>
+                <div class="row">
+                    @foreach ($k->bukus as $buku)
+                        <div class="col-xl-3 col-md-6 col-sm-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <img src="{{ $buku->foto ?? '/assets/images/not-found.png' }}"
+                                        class="card-img-top img-fluid" alt="{{ $buku->judul }}" />
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $buku->judul }}</h5>
+                                        <p class="card-text">
+                                            <span class="badge bg-light-primary">{{ $buku->kategori->nama }}</span>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <p class="text-start">{{ $buku->pengarang }}</p>
+                                            </div>
+                                            <div class="col-6">
+                                                <p class="text-end">{{ $buku->penerbit->nama }}</p>
+                                            </div>
+                                        </div>
+                                        </p>
                                     </div>
-                                    <div class="col-6">
-                                        <p class="text-end">{{ $buku->penerbit->nama }}</p>
+                                    <div class="card-footer d-flex justify-content-end">
+                                        <form method="POST" action="{{ route('user.form_peminjaman_dashboard') }}">
+                                            @csrf
+                                            <input type="hidden" value="{{ $buku->id }}" name="buku_id">
+                                            <button type="submit" class="btn btn-primary">Pinjam</button>
+                                        </form>
                                     </div>
                                 </div>
-                                </p>
-                            </div>
-                            <div class="card-footer d-flex justify-content-end">
-                                <form method="POST" action="{{ route('user.form_peminjaman_dashboard') }}">
-                                    @csrf
-                                    <input type="hidden" value="{{ $buku->id }}" name="buku_id">
-                                    <button type="submit" class="btn btn-primary">Pinjam</button>
-                                </form>
                             </div>
                         </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
+                    @endforeach
+            @endif
+        @endforeach
     </div>
 @endsection

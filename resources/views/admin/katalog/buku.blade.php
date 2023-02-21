@@ -212,7 +212,7 @@
                                             <div class="form-group">
                                                 <label>Upload Gambar Buku</label>
                                                 <input type="file" class="form-control" name="foto"
-                                                    placeholder="Gambar" />
+                                                    placeholder="" value="{{ $b->foto }}" />
                                             </div>
                                         </div>
 
